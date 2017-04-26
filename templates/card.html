@@ -1,0 +1,135 @@
+
+<header class="jumbotron header">
+	<div class="row ">
+		<div class="col-xs-12">
+			<div class="col-xs-2 icon-back" >
+				<a href="#cardlisthome"><i class="fa fa-angle-left" aria-hidden="true"></i></a></div>
+			<div class="col-xs-8"><h5>CitiBanamex Card</h5></div>
+			<div class="col-xs-2 icon-search" style="display: block"><i class="fa fa-search" aria-hidden="true"></i></div>
+		</div>
+	</div>
+</header>
+
+<section class="container wrapper">
+	<div class="row paddingtop30">
+		<div >
+
+			<ANY ng-switch="cardstatus">
+				<ANY ng-switch-when="cardactivated">
+					<div class="col-xs-12 lock-status unlocked">
+						<i class="fa fa-check" aria-hidden="true"></i>
+						 Your card is now unlocked
+					</div>
+				</ANY>
+				<ANY ng-switch-when="carddeactivated">
+					<div class="col-xs-12 lock-status unlocked">
+						<i class="fa fa-times" aria-hidden="true"></i>
+						Your card is now locked
+					</div>
+
+				</ANY>
+				<ANY ng-switch-default></ANY>
+			</ANY>
+
+
+
+
+		</div>
+		<div class="expand-sec">
+			<img src="images/expand-card.png" class="img-responsive" />
+		</div>
+		<div class="col-xs-12 btn-expand">
+			<div class="exp-wrapper">
+				<div>Expand</div>
+				<div><i class="fa fa-bars" aria-hidden="true"></i> </div>
+			</div>
+		</div>
+		<div class="col-xs-12 bb">
+			<div class="col-xs-12 text-center">
+				<div class="amt-center">
+					<span class="symbol">$</span>
+					<span class="amt">{{currentBalance}}</span>
+					<span class="sub-amt"></span>
+				</div>
+				<div class="content-area col-xs-12">
+					<div class="pad10">current balance</div>
+					<div class="pad10"><button class="btn btn-lg btn-primary">Make a Payment</button></div>
+					<div class="pad10 txt-blue">View Statements</div>
+				</div>
+			</div>
+		</div>
+		<div class="row purchase-details">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12 pad10">
+						<div class="col-xs-6">Available Credit Purchages</div>
+						<div class="col-xs-6 text-right">$ {{cardCashLimit}}</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 pad10">
+						<div class="col-xs-6">Minimum Payment Due on {{lastPaymentDate | date:'dd/mm/yyyy'}}</div>
+						<div class="col-xs-6 text-right">$ {{minimumPaymentAmt}}</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 pad10">
+						<div class="col-xs-6">Last Statement Balance {{minimumPaymentDueDate}}</div>
+						<div class="col-xs-6 text-right">$ {{balOfLastStmt}}</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 pad10">
+						<div class="col-xs-6">Total Available Citi  ThankYou Points</div>
+						<div class="col-xs-6 text-right">{{thankYouPoints}}</div>
+					</div>
+				</div>
+				<div class="row txt-blue text-center">
+					<div class="col-xs-12  border-bottom pad10">
+						View Reward and Reedom
+					</div>
+					<div class="col-xs-12 pad10">
+						
+						<a href="#cardlist/{{responseCardNumber}}">Misplaced Your Card? Lock it</a>
+					</div>
+				</div>
+				<div class="col-xs-12 pad10 text-center">
+					Transactions
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-sec col-xs-10 text-center col-xs-offset-1">
+			<div class="col-xs-6 active">Since last statement</div>
+			<div class="col-xs-6">Scheduled</div>
+		</div>
+
+	</div>
+</section>
+
+<footer>
+	<ul>
+		<li class="fa-blue">
+			<div><i class="fa fa-bars" aria-hidden="true"></i></div>
+			<div>Accounts</div>
+		</li>
+		<li>
+			<div><i class="fa fa-usd" aria-hidden="true"></i></div>
+			<div>Payments</div>
+		</li>
+		<li>
+			<div><i class="fa fa-life-ring" aria-hidden="true"></i></div>
+			<div>Services</div>
+		</li>
+		<li>
+			<div><i class="fa fa-cog" aria-hidden="true"></i></div>
+			<div>Settings</div>
+		</li>
+	</ul>
+</footer>
+
+<script>
+    var windowHeight = $(window).height();
+    var setWrapperHeight = (windowHeight)-90;
+    $(".wrapper").css("height", setWrapperHeight);
+</script>
